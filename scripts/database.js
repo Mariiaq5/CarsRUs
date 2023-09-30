@@ -1,8 +1,8 @@
-
+//The Database is below
 const database = {
     paintColor: [
     {
-        id: 1,
+        id: 1, 
         color: "Silver",
         price: 334.54,
     },
@@ -92,12 +92,24 @@ const database = {
         price: 614.24,
     },
 ],
-    orders: [
+    customOrders: [
     {
-
+        id: 1,
+        interiorId: 1,
+        paintId: 1,
+        technologyId: 1,
+        wheelId: 1,
     }
-]}
+],
+    orderBuilder: [
+        {
 
+        }
+    ]
+}
+
+
+//Export functions below for Paints, Interiors, Technologies, Wheels and Orders from DB
 export const getPaints = () => {
     return database.paintColor.map(color => ({...color}))
 }
@@ -115,9 +127,10 @@ export const getWheels = () => {
 }
 
 export const getOrders = () => {
-    return database.orders.map(order => ({...order}))
+    return database.customOrders.map(order => ({...order}))
 }
 
+//Functions below should write changes in dropdown to database.orders
 export const setPaints = (id) => {
     database.orders.paintId = id
 }
@@ -134,12 +147,13 @@ export const setTechnologies = (id) => {
     database.orders.technologyId = id
 }
 
-export const Orders = () => {
 
-    const newOrder = {...database.orders}
+export const addOrder = () => {
 
-    const lastIndex = database.orders.length - 1
-    newOrder.id = database.orders[lastIndex].id + 1
+    const newOrder = {...database.orderBuilder}
+
+    const lastIndex = database.customOrdersorders.length - 1
+    newOrder.id = database.customOrders[lastIndex].id + 1
 
     newOrder.timestamp = Date.now()
 
@@ -149,4 +163,3 @@ export const Orders = () => {
 
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
-

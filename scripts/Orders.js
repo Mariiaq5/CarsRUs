@@ -11,7 +11,6 @@ const technologies = getTechnologies()
 const wheels = getWheels()
 
 const buildOrderListItem = (order) => {
-    // Remember that the function you pass to find() must return true/false
     const foundInterior = interiors.find(
         (interior) => {
             return interior.id === order.interiorId
@@ -44,10 +43,7 @@ const buildOrderListItem = (order) => {
 
 
 export const Orders = () => {
-    /*
-        Can you explain why the state variable has to be inside
-        the component function for Orders, but not the others?
-    */
+
     const orders = getOrders()
 
     let html = "<ul>"

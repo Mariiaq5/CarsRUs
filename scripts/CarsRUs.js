@@ -2,7 +2,7 @@ import { Paints } from "./Paints.js";
 import { Interiors } from "./Interiors.js";
 import { Technologies } from "./Technologies.js";
 import { Wheels } from "./Wheels.js";
-import { Orders } from "./database.js";
+import { Orders } from "./Orders.js";
 
 document.addEventListener(
     "click",
