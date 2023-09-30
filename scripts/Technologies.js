@@ -1,4 +1,5 @@
 import { getTechnologies } from "./database.js"
+import { setTechnologies } from "./database.js"
 
 const technologies = getTechnologies()
 
@@ -7,8 +8,7 @@ document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.id === "tech") {
-            const chosenOption = changeEvent.target.value
-            console.log(chosenOption)  // "1" or "2"
+            setTechnologies(parseInt(changeEvent.target.value))
         }
     }
 )

@@ -22,7 +22,7 @@ const database = {
         price: 365.88,
     },
 ],
-    interior: [
+    interiors: [
     {
         id: 1,
         interiorStyle: "Beige Fabric",
@@ -44,7 +44,7 @@ const database = {
         price: 523.67
     },
 ],
-    technology: [
+    technologies: [
     {
         id: 1,
         package: "Basic Package",
@@ -94,11 +94,7 @@ const database = {
 ],
     orders: [
     {
-        orderId: null,
-        paintId: null,
-        interiorId: null,
-        techId: null,
-        wheelId: null,
+
     }
 ]}
 
@@ -107,13 +103,50 @@ export const getPaints = () => {
 }
 
 export const getInteriors = () => {
-    return database.interior.map(interior => ({...interior}))
+    return database.interiors.map(interior => ({...interior}))
 }
 
 export const getTechnologies = () => {
-    return database.technology.map(tech => ({...tech}))
+    return database.technologies.map(tech => ({...tech}))
 }
 
 export const getWheels = () => {
     return database.wheels.map(wheel => ({...wheel}))
 }
+
+export const getOrders = () => {
+    return database.orders.map(order => ({...order}))
+}
+
+export const setPaints = (id) => {
+    database.orders.paintId = id
+}
+
+export const setInteriors = (id) => {
+    database.orders.interiorId = id
+}
+
+export const setWheels = (id) => {
+    database.orders.wheelsId = id
+}
+
+export const setTechnologies = (id) => {
+    database.orders.technologyId = id
+}
+
+export const Orders = () => {
+
+    const newOrder = {...database.orders}
+
+    const lastIndex = database.orders.length - 1
+    newOrder.id = database.orders[lastIndex].id + 1
+
+    newOrder.timestamp = Date.now()
+
+    database.orders.push(newOrder)
+
+    database.orders = {}
+
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
