@@ -99,6 +99,7 @@ const database = {
         paintId: 1,
         technologyId: 1,
         wheelId: 1,
+        timestamp: 1614659931693,
     }
 ],
     orderBuilder: [
@@ -132,34 +133,34 @@ export const getOrders = () => {
 
 //Functions below should write changes in dropdown to database.orders
 export const setPaints = (id) => {
-    database.orders.paintId = id
+    database.orderBuilder.paintId = id
 }
 
 export const setInteriors = (id) => {
-    database.orders.interiorId = id
+    database.orderBuilder.interiorId = id
 }
 
 export const setWheels = (id) => {
-    database.orders.wheelsId = id
+    database.orderBuilder.wheelId = id
 }
 
 export const setTechnologies = (id) => {
-    database.orders.technologyId = id
+    database.orderBuilder.technologyId = id
 }
 
 
-export const addOrder = () => {
+export const addCustomerOrder = () => {
 
     const newOrder = {...database.orderBuilder}
 
-    const lastIndex = database.customOrdersorders.length - 1
+    const lastIndex = database.customOrders.length - 1
     newOrder.id = database.customOrders[lastIndex].id + 1
 
     newOrder.timestamp = Date.now()
 
-    database.orders.push(newOrder)
+    database.customOrders.push(newOrder)
 
-    database.orders = {}
+    database.orderBuilder = {}
 
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }

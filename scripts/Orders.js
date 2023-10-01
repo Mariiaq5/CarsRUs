@@ -26,19 +26,21 @@ const buildOrderListItem = (order) => {
             return technology.id === order.technologyId
         }
     )
-    const foundWheel = wheels.find(
-        (wheel) => {
-            return wheel.id === order.wheelId
+    const foundWheels = wheels.find(
+        (wheels) => {
+            return wheels.id === order.wheelId
         }
     )
-    const totalCost = (foundInterior.price + foundPaint.price + foundTechnology.price + foundWheel.price)
+    const totalCost = (foundInterior.price + foundWheels.price + foundPaint.price + foundTechnology.price)
     const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     })
+    /* const date = new Date(order.timestamp) */
     return `<li>
     Order #${order.id} cost ${costString}
    </li>`
+   /* was placed on ${date} */
 }
 
 

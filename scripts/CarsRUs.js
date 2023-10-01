@@ -3,12 +3,13 @@ import { Interiors } from "./Interiors.js";
 import { Technologies } from "./Technologies.js";
 import { Wheels } from "./Wheels.js";
 import { Orders } from "./Orders.js";
+import { addCustomerOrder } from "./database.js";
 
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            window.alert(Paints)
+        addCustomerOrder()
         }
     }
 )
