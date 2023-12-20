@@ -11,7 +11,6 @@ const technologies = getTechnologies()
 const wheels = getWheels()
 
 const buildOrderListItem = (order) => {
-    // Remember that the function you pass to find() must return true/false
     const foundInterior = interiors.find(
         (interior) => {
             return interior.id === order.interiorId
@@ -27,27 +26,26 @@ const buildOrderListItem = (order) => {
             return technology.id === order.technologyId
         }
     )
-    const foundWheel = wheels.find(
-        (wheel) => {
-            return wheel.id === order.wheelId
+    const foundWheels = wheels.find(
+        (wheels) => {
+            return wheels.id === order.wheelId
         }
     )
-    const totalCost = (foundInterior.price + foundPaint.price + foundTechnology.price + foundWheel.price)
+    const totalCost = (foundInterior.price + foundWheels.price + foundPaint.price + foundTechnology.price)
     const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     })
+    /* const date = new Date(order.timestamp) */
     return `<li>
     Order #${order.id} cost ${costString}
    </li>`
+   /* was placed on ${date} */
 }
 
 
 export const Orders = () => {
-    /*
-        Can you explain why the state variable has to be inside
-        the component function for Orders, but not the others?
-    */
+
     const orders = getOrders()
 
     let html = "<ul>"

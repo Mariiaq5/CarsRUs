@@ -1,8 +1,8 @@
-
+//The Database is below
 const database = {
     paintColor: [
     {
-        id: 1,
+        id: 1, 
         color: "Silver",
         price: 334.54,
     },
@@ -92,12 +92,25 @@ const database = {
         price: 614.24,
     },
 ],
-    orders: [
+    customOrders: [
     {
-
+        id: 1,
+        interiorId: 1,
+        paintId: 1,
+        technologyId: 1,
+        wheelId: 1,
+        timestamp: 1614659931693,
     }
-]}
+],
+    orderBuilder: [
+        {
 
+        }
+    ]
+}
+
+
+//Export functions below for Paints, Interiors, Technologies, Wheels and Orders from DB
 export const getPaints = () => {
     return database.paintColor.map(color => ({...color}))
 }
@@ -115,38 +128,39 @@ export const getWheels = () => {
 }
 
 export const getOrders = () => {
-    return database.orders.map(order => ({...order}))
+    return database.customOrders.map(order => ({...order}))
 }
 
+//Functions below should write changes in dropdown to database.orders
 export const setPaints = (id) => {
-    database.orders.paintId = id
+    database.orderBuilder.paintId = id
 }
 
 export const setInteriors = (id) => {
-    database.orders.interiorId = id
+    database.orderBuilder.interiorId = id
 }
 
 export const setWheels = (id) => {
-    database.orders.wheelsId = id
+    database.orderBuilder.wheelId = id
 }
 
 export const setTechnologies = (id) => {
-    database.orders.technologyId = id
+    database.orderBuilder.technologyId = id
 }
 
-export const Orders = () => {
 
-    const newOrder = {...database.orders}
+export const addCustomerOrder = () => {
 
-    const lastIndex = database.orders.length - 1
-    newOrder.id = database.orders[lastIndex].id + 1
+    const newOrder = {...database.orderBuilder}
+
+    const lastIndex = database.customOrders.length - 1
+    newOrder.id = database.customOrders[lastIndex].id + 1
 
     newOrder.timestamp = Date.now()
 
-    database.orders.push(newOrder)
+    database.customOrders.push(newOrder)
 
-    database.orders = {}
+    database.orderBuilder = {}
 
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
-
